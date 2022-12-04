@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ApiWithLogging.Filters;
 
@@ -8,17 +6,17 @@ public class LoggingFilter : IActionFilter
 {
     public void OnActionExecuting(ActionExecutingContext context)
     {
-        var action = ((ControllerActionDescriptor)context.ActionDescriptor).ActionName;
-        var controller = ((ControllerBase)context.Controller).ControllerContext.ActionDescriptor.ControllerName;
+        var method = context.HttpContext.Request.Method;
+        var path = context.HttpContext.Request.Path;
 
-        Console.WriteLine($"Called before {action} {controller}");
+        Console.WriteLine($"Called before {method} {path}");
     }
 
     public void OnActionExecuted(ActionExecutedContext context)
     {
-        var action = ((ControllerActionDescriptor)context.ActionDescriptor).ActionName;
-        var controller = ((ControllerBase)context.Controller).ControllerContext.ActionDescriptor.ControllerName;
+        var method = context.HttpContext.Request.Method;
+        var path = context.HttpContext.Request.Path;
 
-        Console.WriteLine($"Called after {action} {controller}");
+        Console.WriteLine($"Called after {method} {path}");
     }
 }
