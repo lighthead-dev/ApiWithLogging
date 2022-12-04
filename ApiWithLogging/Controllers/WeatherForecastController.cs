@@ -1,3 +1,4 @@
+using ApiWithLogging.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiWithLogging.Controllers;

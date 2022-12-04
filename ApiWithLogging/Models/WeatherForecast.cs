@@ -1,4 +1,4 @@
-namespace ApiWithLogging;
+namespace ApiWithLogging.Models;
 
 public class WeatherForecast
 {
